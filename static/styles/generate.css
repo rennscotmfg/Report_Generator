@@ -270,17 +270,133 @@ h1 {
     animation: spin 0.8s linear infinite;
 }
 
-/* Pulse animation for loading dots */
-.loading-dots::after {
-    content: '';
-    animation: loadingDots 1.5s infinite;
+/* Flatpickr Custom Styling - Add these to your generate.css file */
+
+/* Custom styling for the date input when using Flatpickr */
+.input-date {
+    cursor: pointer;
 }
 
-@keyframes loadingDots {
-    0%, 20% { content: ''; }
-    40% { content: '.'; }
-    60% { content: '..'; }
-    80%, 100% { content: '...'; }
+.input-date::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Custom Flatpickr theme to match your design */
+.custom-flatpickr.flatpickr-calendar {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2) !important;
+    animation: fadeInScale 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-flatpickr .flatpickr-months {
+    background: transparent !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.custom-flatpickr .flatpickr-month {
+    background: transparent !important;
+    color: #ffffff !important;
+}
+
+.custom-flatpickr .flatpickr-current-month .flatpickr-monthDropdown-months {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+}
+
+.custom-flatpickr .flatpickr-current-month .numInputWrapper {
+    color: #ffffff !important;
+}
+
+.custom-flatpickr .flatpickr-current-month input.cur-year {
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 6px !important;
+}
+
+.custom-flatpickr .flatpickr-weekdays {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.custom-flatpickr .flatpickr-weekday {
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: 600 !important;
+}
+
+.custom-flatpickr .flatpickr-days {
+    background: transparent !important;
+}
+
+.custom-flatpickr .flatpickr-day {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.custom-flatpickr .flatpickr-day:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    transform: scale(1.05) !important;
+}
+
+.custom-flatpickr .flatpickr-day.selected {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+}
+
+.custom-flatpickr .flatpickr-day.today {
+    border: 2px solid rgba(255, 255, 255, 0.4) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.custom-flatpickr .flatpickr-day.today.selected {
+    border: 2px solid #ffffff !important;
+}
+
+.custom-flatpickr .flatpickr-day.prevMonthDay,
+.custom-flatpickr .flatpickr-day.nextMonthDay {
+    color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.custom-flatpickr .flatpickr-day.disabled {
+    color: rgba(255, 255, 255, 0.2) !important;
+    cursor: not-allowed !important;
+}
+
+/* Navigation arrows */
+.custom-flatpickr .flatpickr-prev-month,
+.custom-flatpickr .flatpickr-next-month {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 50% !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.custom-flatpickr .flatpickr-prev-month:hover,
+.custom-flatpickr .flatpickr-next-month:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.1) !important;
+}
+
+/* Animation for calendar appearance */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 /* Responsive Design */
