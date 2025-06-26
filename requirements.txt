@@ -1,6 +1,6 @@
 pandas
 flask
 reportlab
-psycopg2
+psycopg2-binary
 python-dotenv
 gunicorn
