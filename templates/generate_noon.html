@@ -8,16 +8,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/generate.css') }}" />
 </head>
 <body>
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p class="loading-text">Generating PDF<span class="loading-dots"></span></p>
+        </div>
+    </div>
+
     <div class="container">
         <h1>Select a Date to Generate Noon to Noon CNC Report PDF</h1>
-        <form method="post" class="generate-form">
+        <form method="post" class="generate-form" id="generateForm">
             <input type="date" name="date" required class="input-date" />
-            <button type="submit" class="btn btn-primary">Generate PDF</button>
+            <button type="submit" class="btn btn-primary" id="generateBtn">Generate PDF</button>
         </form>
         <div class="bottom-buttons">
             <a href="{{ url_for('generate') }}" class="link">Go to Generate Page</a>
             <a href="{{ url_for('list_files') }}" class="link">View Generated Files</a>
         </div>
     </div>
+    <script src="{{ url_for('static', filename='js/generate.js') }}"></script>
 </body>
 </html>
