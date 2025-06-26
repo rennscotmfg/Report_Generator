@@ -9,6 +9,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Route to list and download files
 @app.route('/files')
 def list_files():
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
     files = os.listdir(app.config['UPLOAD_FOLDER'])
     return render_template('files.html', files=files)
 
