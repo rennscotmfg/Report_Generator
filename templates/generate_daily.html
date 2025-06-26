@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Generate Daily PDF</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/generate.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Select a Date to Generate Daily CNC Report PDF</h1>
+        <form method="post" class="generate-form">
+            <input type="date" name="date" required class="input-date" />
+            <button type="submit" class="btn btn-primary">Generate PDF</button>
+        </form>
+        <div class="bottom-buttons">
+            <a href="{{ url_for('generate') }}" class="link">Go to Generate Page</a>
+            <a href="{{ url_for('list_files') }}" class="link">View Generated Files</a>
+        </div>
+    </div>
+</body>
+</html>

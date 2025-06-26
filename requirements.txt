@@ -1,0 +1,6 @@
+pandas
+flask
+reportlab
+psycopg2
+python-dotenv
+gunicorn
