@@ -61,6 +61,7 @@ def generate_pdf(date_str, output_path):
     # --- LOAD AND PREPARE DATA ---
     conn = psycopg2.connect(**DB_CONFIG)
     df = pd.read_sql_query("SELECT * FROM machine_log", conn)
+    conn.close()
     df['start_timestamp'] = pd.to_datetime(df['start_timestamp'])
     df['end_timestamp'] = pd.to_datetime(df['end_timestamp'])
 
