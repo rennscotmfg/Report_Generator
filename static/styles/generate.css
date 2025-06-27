@@ -387,6 +387,92 @@ h1 {
     transform: scale(1.1) !important;
 }
 
+/* Add this to your generate.css file */
+
+/* Back button styles */
+.back-button {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(-2px);
+    color: #ffffff;
+}
+
+.back-button svg {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-button:hover svg {
+    transform: translateX(-2px);
+}
+
+/* Update container to have relative positioning for the back button */
+.container {
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    padding: 5rem 3rem 3rem 3rem; /* Increased top padding for more space */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Responsive adjustments for back button */
+@media (max-width: 768px) {
+    .back-button {
+        top: 1rem;
+        left: 1rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.85rem;
+    }
+    
+    .container {
+        padding: 4rem 2rem 2rem 2rem; /* Increased top padding for tablet */
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-button {
+        top: 0.75rem;
+        left: 0.75rem;
+        padding: 0.35rem 0.7rem;
+        font-size: 0.8rem;
+    }
+    
+    .back-button svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .container {
+        padding: 3.5rem 1.5rem 1.5rem 1.5rem; /* Increased top padding for mobile */
+    }
+}
+
 /* Animation for calendar appearance */
 @keyframes fadeInScale {
     from {
