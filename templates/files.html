@@ -3,15 +3,39 @@
 <head>
     <title>File Directory</title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/files.css') }}">
 </head>
 <body>
     <div class="container">
         <h1>Available Files</h1>
-        <ul>
-            {% for file in files %}
-                <li class="file-item">
+        
+        {% set daily_files = [] %}
+        {% set weekly_files = [] %}
+        {% set noon_files = [] %}
+        {% set other_files = [] %}
+        
+        {% for file in files %}
+            {% if file.startswith('daily') %}
+                {% set _ = daily_files.append(file) %}
+            {% elif file.startswith('weekly') %}
+                {% set _ = weekly_files.append(file) %}
+            {% elif file.startswith('noon') %}
+                {% set _ = noon_files.append(file) %}
+            {% endif %}
+        {% endfor %}
+
+        <!-- Daily Files Section -->
+        {% if daily_files %}
+        <div class="dropdown-section">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span class="dropdown-title">Daily Files</span>
+                <span class="dropdown-arrow">▼</span>
+            </div>
+            <div class="dropdown-content">
+                {% for file in daily_files %}
+                <div class="file-item">
                     <span class="file-name">{{ file }}</span>
                     <div class="actions">
                         <form action="{{ url_for('open_file', filename=file) }}" method="get" target="_blank">
@@ -23,12 +47,89 @@
                             </button>
                         </form>
                     </div>
-                </li>
-            {% else %}
-                <li style="text-align: center;">No files available.</li>
-            {% endfor %}
-        </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Weekly Files Section -->
+        {% if weekly_files %}
+        <div class="dropdown-section">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span class="dropdown-title">Weekly Files</span>
+                <span class="dropdown-arrow">▼</span>
+            </div>
+            <div class="dropdown-content">
+                {% for file in weekly_files %}
+                <div class="file-item">
+                    <span class="file-name">{{ file }}</span>
+                    <div class="actions">
+                        <form action="{{ url_for('open_file', filename=file) }}" method="get" target="_blank">
+                            <button type="submit" class="btn btn-download">Open</button>
+                        </form>
+                        <form action="{{ url_for('delete_file', filename=file) }}" method="post">
+                            <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete {{ file }}?');">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Noon Files Section -->
+        {% if noon_files %}
+        <div class="dropdown-section">
+            <div class="dropdown-header" onclick="toggleDropdown(this)">
+                <span class="dropdown-title">Noon Files</span>
+                <span class="dropdown-arrow">▼</span>
+            </div>
+            <div class="dropdown-content">
+                {% for file in noon_files %}
+                <div class="file-item">
+                    <span class="file-name">{{ file }}</span>
+                    <div class="actions">
+                        <form action="{{ url_for('open_file', filename=file) }}" method="get" target="_blank">
+                            <button type="submit" class="btn btn-download">Open</button>
+                        </form>
+                        <form action="{{ url_for('delete_file', filename=file) }}" method="post">
+                            <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure you want to delete {{ file }}?');">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- No Files Message -->
+        {% if not files %}
+        <div class="no-files">No files available.</div>
+        {% endif %}
+
         <a href="{{ url_for('generate') }}" class="link">Go to Generate Page</a>
     </div>
+
+    <script>
+        function toggleDropdown(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.dropdown-arrow');
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                content.style.display = 'none';
+                arrow.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('open');
+                content.style.display = 'block';
+                arrow.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
 </body>
 </html>
