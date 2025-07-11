@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Generate Noon to Noon PDF</title>
+    <title>Generate Nightly PDF</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/generate.css') }}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
@@ -25,7 +25,7 @@
             </svg>
         </a>
         
-        <h1>Select a Date to Generate Noon to Noon CNC Report PDF</h1>
+        <h1>Select a Date to Generate Nightly CNC Report PDF</h1>
         <form method="post" class="generate-form" id="generateForm">
              <input type="text" name="date" required class="input-date" id="dateInput" placeholder="Select a date..." readonly />
             <button type="submit" class="btn btn-primary" id="generateBtn">Generate PDF</button>

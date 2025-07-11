@@ -11,7 +11,7 @@ import sys
 import os
 from dotenv import load_dotenv
 
-def generate_pdf(date_str, output_path):
+def generate_weekly_pdf(date_str, output_path):
 
     # --- CONFIGURATION ---
     load_dotenv()
@@ -323,8 +323,9 @@ def generate_pdf(date_str, output_path):
 
     # --- BUILD PDF ---
     doc.build(report)
-
+"""
 if __name__ == '__main__':
     date_input = sys.argv[1]
     output_path = sys.argv[2]
     generate_pdf(date_input, output_path)
+"""

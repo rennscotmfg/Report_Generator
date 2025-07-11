@@ -21,8 +21,8 @@
                 {% set _ = daily_files.append(file) %}
             {% elif file.startswith('weekly') %}
                 {% set _ = weekly_files.append(file) %}
-            {% elif file.startswith('noon') %}
-                {% set _ = noon_files.append(file) %}
+            {% elif file.startswith('nightly') %}
+                {% set _ = nightly_files.append(file) %}
             {% endif %}
         {% endfor %}
 
@@ -80,15 +80,15 @@
         </div>
         {% endif %}
 
-        <!-- Noon Files Section -->
-        {% if noon_files %}
+        <!-- Nightly Files Section -->
+        {% if nightly_files %}
         <div class="dropdown-section">
             <div class="dropdown-header" onclick="toggleDropdown(this)">
-                <span class="dropdown-title">Noon Files</span>
+                <span class="dropdown-title">Nightly Files</span>
                 <span class="dropdown-arrow">▼</span>
             </div>
             <div class="dropdown-content">
-                {% for file in noon_files %}
+                {% for file in nightly_files %}
                 <div class="file-item">
                     <span class="file-name">{{ file }}</span>
                     <div class="actions">
