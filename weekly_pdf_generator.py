@@ -10,6 +10,7 @@ from reportlab.lib.styles import getSampleStyleSheet
 import sys
 import os
 from dotenv import load_dotenv
+from machine_config import machines_list
 
 def generate_weekly_pdf(date_str, output_path):
 
@@ -56,19 +57,6 @@ def generate_weekly_pdf(date_str, output_path):
         q3 = series.quantile(0.75)
         iqr = q3 - q1
         return series[(series >= q1 - 1.5 * iqr) & (series <= q3 + 1.5 * iqr)]
-
-    machines_list = [
-        {'Machine': 'VF-4SS', 'Uptime': 28800},
-        {'Machine': 'DM-2', 'Uptime': 28800},
-        {'Machine': 'VF-2SSYT', 'Uptime': 28800},
-        {'Machine': 'VF-2SS', 'Uptime': 28800},
-        {'Machine': 'ST-25Y', 'Uptime': 28800},
-        {'Machine': 'Mill-X', 'Uptime': 28800},
-        {'Machine': 'Mill-E', 'Uptime': 28800},
-        {'Machine': 'Grob-R', 'Uptime': 43200},
-        {'Machine': 'Grob-M', 'Uptime': 43200}
-
-    ]
 
     # --- LOAD AND PREPARE DATA ---
     conn = psycopg2.connect(**DB_CONFIG)
