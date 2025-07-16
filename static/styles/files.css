@@ -6,11 +6,29 @@
     box-sizing: border-box;
 }
 
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #8094d6 0%, #5675a7 100%);
+    background: #dfe3e9;
     min-height: 100vh;
-    color: #ffffff;
+    color: #499dd6;
     line-height: 1.6;
 }
 
@@ -29,11 +47,8 @@ h1 {
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
-    background: linear-gradient(45deg, #ffffff, #e0e7ff);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
 }
 
 ul {
@@ -44,7 +59,7 @@ ul {
 /* Dropdown Section Styles */
 .dropdown-section {
     margin-bottom: 2rem;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(210, 229, 245, 0.4);
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
@@ -60,7 +75,6 @@ ul {
     cursor: pointer;
     padding: 1rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 1rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -74,15 +88,15 @@ ul {
 .dropdown-title {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    color: #499dd6;
     text-transform: capitalize;
+    margin-left: 12px;
 }
 
 .dropdown-arrow {
     font-size: 1.2rem;
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    color: rgba(255, 255, 255, 0.8);
+    color: #499dd6;
 }
 
 .dropdown-content {
@@ -105,7 +119,7 @@ ul {
 }
 
 .file-item {
-    background: rgba(255, 255, 255, 0.1);
+    background: #3d9be9;
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
@@ -115,13 +129,11 @@ ul {
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
 }
 
 .file-item:hover {
     transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
     border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -129,7 +141,6 @@ ul {
     font-size: 1.1rem;
     font-weight: 500;
     color: #ffffff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .actions {
@@ -173,27 +184,21 @@ ul {
 }
 
 .btn-download {
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: white;
-    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.3);
+    background: #dfe3e9;
+    color: #499dd6;
 }
 
 .btn-download:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
-    background: linear-gradient(135deg, #059669, #047857);
 }
 
 .btn-delete {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
+    background: #1f4b75;
     color: white;
-    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
 }
 
 .btn-delete:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.4);
-    background: linear-gradient(135deg, #dc2626, #b91c1c);
 }
 
 .link {
@@ -204,7 +209,7 @@ ul {
     font-size: 1.1rem;
     font-weight: 500;
     padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: #1f4b75;
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
@@ -231,7 +236,6 @@ ul {
 
 .link:hover {
     transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     border-color: rgba(255, 255, 255, 0.3);
 }

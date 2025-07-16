@@ -75,7 +75,7 @@ def generate_noon():
         selected_date = request.form.get('date')
         if selected_date:
             # Call your script with the selected date
-            output_filename = f"noon_report_{selected_date}.pdf"
+            output_filename = f"nightly_report_{selected_date}.pdf"
             output_path = os.path.join(app.config['UPLOAD_FOLDER'], output_filename)
             
             generate_nightly_pdf(selected_date, output_path)

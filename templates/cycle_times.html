@@ -9,10 +9,13 @@
     <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.3.2/css/dataTables.dataTables.css" />
     <script src="https://cdn.datatables.net/2.3.2/js/dataTables.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="poppins-regular">
     <div class="container">
-        <h1>Cycle Times</h1>
+        <h1 class="poppins-bold">Cycle Times</h1>
 
         <a href="{{ url_for('generate_cycle_times') }}" class="link">Reload Cycle Times</a>
         <a href="{{ url_for('generate') }}" class="link">Go to Generate Page</a>

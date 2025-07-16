@@ -6,13 +6,32 @@
     box-sizing: border-box;
 }
 
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.poppins-light-italic {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, #8094d6 0%, #5675a7 100%);
+    background: #dfe3e9;
     min-height: 100vh;
-    color: #ffffff;
+    color: #499dd6;
     line-height: 1.6;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -21,9 +40,9 @@ body {
     max-width: 500px;
     width: 90%;
     padding: 3rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, .1);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, .2);
     border-radius: 24px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -45,13 +64,11 @@ h1 {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 2.5rem;
-    background: linear-gradient(45deg, #ffffff, #e0e7ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
     line-height: 1.2;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
+
 
 .generate-form {
     display: flex;
@@ -64,7 +81,7 @@ h1 {
     padding: 1rem 1.5rem;
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.1);
+    background: #3d9ce952;
     backdrop-filter: blur(10px);
     color: #ffffff;
     font-size: 1.1rem;
@@ -75,21 +92,15 @@ h1 {
 
 .input-date:focus {
     border-color: rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.15);
+    background: #3d9ce952;
     box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
-}
-
-.input-date::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    cursor: pointer;
 }
 
 .btn {
     padding: 1rem 2rem;
     border: none;
     border-radius: 16px;
-    font-weight: 600;
     font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -117,7 +128,7 @@ h1 {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    background: #3d9be9;
     color: white;
     box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
 }
@@ -125,7 +136,6 @@ h1 {
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 32px rgba(59, 130, 246, 0.4);
-    background: linear-gradient(135deg, #1d4ed8, #1e40af);
 }
 
 .btn-primary:active {
@@ -142,16 +152,17 @@ h1 {
 .link {
     color: #ffffff;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
-    padding: 0.75rem 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 2rem;
+    background: #1f4b75;
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
+    display: inline-block;
 }
 
 .link::before {
@@ -171,7 +182,6 @@ h1 {
 
 .link:hover {
     transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     border-color: rgba(255, 255, 255, 0.3);
 }
@@ -270,151 +280,54 @@ h1 {
     animation: spin 0.8s linear infinite;
 }
 
-/* Flatpickr Custom Styling - Add these to your generate.css file */
-
-/* Custom styling for the date input when using Flatpickr */
-.input-date {
-    cursor: pointer;
+.top-bar {
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+    z-index: 10;
 }
 
-.input-date::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Custom Flatpickr theme to match your design */
-.custom-flatpickr.flatpickr-calendar {
-    background: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(20px) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 16px !important;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2) !important;
-    animation: fadeInScale 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.custom-flatpickr .flatpickr-months {
-    background: transparent !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-}
-
-.custom-flatpickr .flatpickr-month {
-    background: transparent !important;
-    color: #ffffff !important;
-}
-
-.custom-flatpickr .flatpickr-current-month .flatpickr-monthDropdown-months {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 8px !important;
-}
-
-.custom-flatpickr .flatpickr-current-month .numInputWrapper {
-    color: #ffffff !important;
-}
-
-.custom-flatpickr .flatpickr-current-month input.cur-year {
-    background: transparent !important;
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 6px !important;
-}
-
-.custom-flatpickr .flatpickr-weekdays {
-    background: transparent !important;
-    color: rgba(255, 255, 255, 0.7) !important;
-}
-
-.custom-flatpickr .flatpickr-weekday {
-    background: transparent !important;
-    color: rgba(255, 255, 255, 0.7) !important;
-    font-weight: 600 !important;
-}
-
-.custom-flatpickr .flatpickr-days {
-    background: transparent !important;
-}
-
-.custom-flatpickr .flatpickr-day {
-    background: transparent !important;
-    color: #ffffff !important;
-    border-radius: 8px !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.custom-flatpickr .flatpickr-day:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
-    color: #ffffff !important;
-    transform: scale(1.05) !important;
-}
-
-.custom-flatpickr .flatpickr-day.selected {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
-    color: #ffffff !important;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
-}
-
-.custom-flatpickr .flatpickr-day.today {
-    border: 2px solid rgba(255, 255, 255, 0.4) !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-}
-
-.custom-flatpickr .flatpickr-day.today.selected {
-    border: 2px solid #ffffff !important;
-}
-
-.custom-flatpickr .flatpickr-day.prevMonthDay,
-.custom-flatpickr .flatpickr-day.nextMonthDay {
-    color: rgba(255, 255, 255, 0.3) !important;
-}
-
-.custom-flatpickr .flatpickr-day.disabled {
-    color: rgba(255, 255, 255, 0.2) !important;
-    cursor: not-allowed !important;
-}
-
-/* Navigation arrows */
-.custom-flatpickr .flatpickr-prev-month,
-.custom-flatpickr .flatpickr-next-month {
-    color: #ffffff !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-radius: 50% !important;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.custom-flatpickr .flatpickr-prev-month:hover,
-.custom-flatpickr .flatpickr-next-month:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
-    transform: scale(1.1) !important;
-}
-
-/* Add this to your generate.css file */
 
 /* Back button styles */
 .back-button {
-    position: absolute;
-    top: 1.5rem;
-    left: 1.5rem;
+    position: static;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: #499dd6;
     text-decoration: none;
     font-size: 0.9rem;
     font-weight: 500;
     padding: 0.5rem 1rem;
-    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 10;
 }
 
+.logo {
+    position: static;
+    max-height: 25px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.unselectable {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 .back-button:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
     transform: translateX(-2px);
-    color: #ffffff;
+    color: #55b2f0;
 }
 
 .back-button svg {
@@ -423,21 +336,6 @@ h1 {
 
 .back-button:hover svg {
     transform: translateX(-2px);
-}
-
-/* Update container to have relative positioning for the back button */
-.container {
-    position: relative;
-    max-width: 500px;
-    width: 90%;
-    padding: 5rem 3rem 3rem 3rem; /* Increased top padding for more space */
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 24px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Responsive adjustments for back button */

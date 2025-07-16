@@ -6,19 +6,25 @@
     <title>Generate CNC Report</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/generate_home.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Generate CNC Report</h1>
+        <h1 class="poppins-bold">Generate CNC Report</h1>
 
-        <div class="nav-buttons">
+        <div class="nav-buttons poppins-regular">
             <a href="/generate/daily" class="btn btn-primary">Generate Daily Report</a>
             <a href="/generate/weekly" class="btn btn-primary">Generate Weekly Report</a>
             <a href="/generate/nightly" class="btn btn-primary">Generate Nightly Report</a>
         </div>
 
-        <a href="{{ url_for('list_files') }}" class="link">View Generated Files</a>
-        <a href="{{ url_for('cycle_times') }}" class="link">View Cycle Times</a>
+        <a href="{{ url_for('list_files') }}" class="link poppins-regular">View Generated Files</a>
+        <a href="{{ url_for('cycle_times') }}" class="link poppins-regular">View Cycle Times</a>
     </div>
+    <footer>
+        <img src="{{ url_for('static', filename='rennscot_logo.png') }}" alt="Logo" class="logo unselectable" />
+    </footer>
 </body>
 </html>

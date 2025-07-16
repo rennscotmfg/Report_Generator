@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/files.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="poppins-regular">
     <div class="container">
-        <h1>Available Files</h1>
+        <h1 class="poppins-bold">Available Files</h1>
         
         {% set daily_files = [] %}
         {% set weekly_files = [] %}
-        {% set noon_files = [] %}
+        {% set nightly_files = [] %}
         {% set other_files = [] %}
         
         {% for file in files %}
@@ -109,7 +112,7 @@
 
         <!-- No Files Message -->
         {% if not files %}
-        <div class="no-files">No files available.</div>
+        <div class="no-files poppins-light-italic">No files available.</div>
         {% endif %}
 
         <a href="{{ url_for('generate') }}" class="link">Go to Generate Page</a>

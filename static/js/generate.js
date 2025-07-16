@@ -4,21 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const loadingOverlay = document.getElementById('loadingOverlay');
             const dateInput = document.getElementById('dateInput');
 
-            // Initialize Flatpickr
-            const datePicker = flatpickr(dateInput, {
-                dateFormat: "Y-m-d", // This matches the format your backend expects
-                defaultDate: "today",
-                maxDate: "today", // Prevent selecting future dates
-                theme: "dark",
-                allowInput: false, // Prevent manual typing
-                clickOpens: true,
-                // Custom styling to match your theme
-                onReady: function(selectedDates, dateStr, instance) {
-                    // Add custom class to the calendar
-                    instance.calendarContainer.classList.add('custom-flatpickr');
-                }
-            });
-
             form.addEventListener('submit', function(e) {
                 // Validate date input
                 if (!dateInput.value) {
