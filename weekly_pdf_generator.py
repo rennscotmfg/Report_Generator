@@ -36,7 +36,7 @@ def generate_weekly_pdf(date_str, output_path):
 
     # Define workweek range
     START_DATE = pd.to_datetime(date_str)  # Monday
-    END_DATE = START_DATE + timedelta(days=4)  # Friday
+    END_DATE = START_DATE + timedelta(days=6)  # Sunday
 
     date_range = pd.date_range(start=START_DATE, end=END_DATE)
 
@@ -119,7 +119,7 @@ def generate_weekly_pdf(date_str, output_path):
             day_start = datetime.combine(date, datetime.min.time()) + timedelta(hours=6)
             day_end = datetime.combine(date, datetime.min.time()) + timedelta(hours=18)
 
-            # Get jobs that overlap with the 6AM–6PM window
+            # Get jobs that overlap with the 6AMâ€“6PM window
             in_window_jobs = group[
                 (group['end_timestamp'] > day_start) & 
                 (group['start_timestamp'] < day_end)
@@ -185,20 +185,21 @@ def generate_weekly_pdf(date_str, output_path):
     report.append(Spacer(1, 24))
 
     # --- SUMMARY PAGE ---
-    summary_data = [['Machine', 'Total Runs', 'Total Runtime (HH:MM:SS)', 'Total Downtime (HH:MM:SS)', 'Efficiency Rate (%)']]
+    summary_data = [['Machine', 'Total Runs', 'Total Runtime', 'Total Downtime', 'Available Hours', 'Efficiency Rate (%)']]
     for machine in df['machine_name'].unique():
         machine_df = df[df['machine_name'] == machine]
         machine_uptime = next((m for m in machines_list if m['Machine'] == machine), None)['Uptime'] * 5
         total_runtime = machine_df[~machine_df['program'].str.contains('DOWNTIME')]['duration_seconds'].sum()
         total_downtime = machine_uptime - total_runtime
         total_downtime= max(total_downtime, 0)  # Ensure non-negative runtime
-        efficiency_rate = (total_runtime / (total_runtime + total_downtime)) * 100 if (total_runtime + total_downtime) > 0 else 0
+        efficiency_rate = (total_runtime / (machine_uptime)) * 100 if (total_runtime + total_downtime) > 0 else 0
         run_count = len(machine_df[~machine_df['program'].str.contains('DOWNTIME')])
         summary_data.append([
             machine,
             run_count,
             format_duration(total_runtime),
             format_duration(total_downtime),
+            format_duration(machine_uptime),
             format_percentage(efficiency_rate)
         ])
 
@@ -207,7 +208,7 @@ def generate_weekly_pdf(date_str, output_path):
     for machine in machines_list:
         if machine['Machine'] not in summary_data_machines:
             uptime = format_duration(machine['Uptime'] * 5)  # 5 days of uptime
-            summary_data.append([machine['Machine'], 0, '00:00:00', uptime, '0.00%'])
+            summary_data.append([machine['Machine'], 0, '00:00:00', uptime, uptime, '0.00%'])
 
     summary_table = Table(summary_data, hAlign='CENTER')
     summary_table.setStyle(TableStyle([

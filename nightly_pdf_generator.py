@@ -71,7 +71,7 @@ def generate_nightly_pdf(date_str, output_path):
         day_start = target_datetime_start
         day_end = target_datetime_end
 
-        # Get jobs that overlap with the 6AM–6PM window
+        # Get jobs that overlap with the 6AMâ€“6PM window
         in_window_jobs = group[
             (group['end_timestamp'] > day_start) & 
             (group['start_timestamp'] < day_end)
@@ -132,7 +132,7 @@ def generate_nightly_pdf(date_str, output_path):
     report.append(Spacer(1, 24))
 
     # --- SUMMARY PAGE ---
-    summary_data = [['Machine', 'Total Runs', 'Total Runtime (HH:MM:SS)', 'Total Downtime (HH:MM:SS)', 'Efficiency Rate (%)']]
+    summary_data = [['Machine', 'Total Runs', 'Total Runtime', 'Total Downtime', 'Efficiency Rate (%)']]
     for machine in df['machine_name'].unique():
         machine_df = df[df['machine_name'] == machine]
         machine_uptime = next((m for m in machines_list if m['Machine'] == machine), None)['Uptime']
@@ -140,7 +140,7 @@ def generate_nightly_pdf(date_str, output_path):
         total_downtime = machine_uptime - total_runtime
         if total_downtime < 0:
             total_downtime = 0
-        efficiency_rate = (total_runtime / (total_runtime + total_downtime)) * 100 if (total_runtime + total_downtime) > 0 else 0
+        efficiency_rate = (total_runtime / (machine_uptime)) * 100 if (total_runtime + total_downtime) > 0 else 0
         run_count = len(machine_df[machine_df['program'].str.contains('DOWNTIME') == False])
         summary_data.append([
             machine,

@@ -4,6 +4,7 @@ from daily_pdf_generator import generate_daily_pdf
 from nightly_pdf_generator import generate_nightly_pdf
 from weekly_pdf_generator import generate_weekly_pdf
 from cycle_times import get_cycle_times
+from datetime import datetime
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/pdf'
@@ -60,6 +61,7 @@ def generate_weekly():
         selected_date = request.form.get('date')
         if selected_date:
             # Call your script with the selected date
+            selected_date = datetime.strptime(selected_date + '-1', "%G-W%V-%u").date()
             output_filename = f"weekly_report_{selected_date}.pdf"
             output_path = os.path.join(app.config['UPLOAD_FOLDER'], output_filename)
             
